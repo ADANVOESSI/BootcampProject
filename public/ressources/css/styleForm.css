@@ -1,0 +1,116 @@
+*{
+  /* box-sizing: border-box; */
+  font-family: 'Raleway', sans-serif;
+}
+:root{
+  --first_color:#fff;
+  --second_color:#111;
+  --tird_color:#29d9d5;
+  --forth_color:#222;
+  --fith_color:#999;
+}
+body{
+  /* background: url('../assets/bg1.jpg'); */
+  background: var(--second_color);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containe {
+  margin: 2rem auto;
+  background: url('../assets/fond-design-texture-bois-chene_53876-143033.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  max-width: 1000px;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.containe .box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid #c4c4c4;
+  padding: 30px 25px 10px 25px;
+  background: white;
+  margin: 2rem auto;
+  max-width: 80%;
+  box-shadow: 0 0 10px var(--tird_color);
+  text-align: center;
+}
+.containe .box label{
+  flex-basis: 100%;
+  margin-bottom: 1rem;
+  color: #797676;
+  font-size: 18px;
+}
+.containe h1.box-logo span {
+  color: var(--tird_color);
+}
+.containe h1.box-title {
+  color: #a1a1a1;
+  font-weight: 300;
+  padding: 15px 25px;
+  line-height: 30px;
+  font-size: 25px;
+  text-align:center;
+  margin: -27px -26px 26px;
+}
+.containe .box .box-button {
+  border-radius: 5px;
+  background: #d2483c;
+  text-align: center;
+  cursor: pointer;
+  font-size: 19px;
+  width: 80%;
+  height: 40px;
+  padding: 0;
+  color: #fff;
+  border: 0;
+  outline:0;
+}
+.containe .box-register
+{
+  text-align:center;
+  margin-bottom:0px;
+}
+.containe .box-register a
+{
+  text-decoration:none;
+  font-size:14px;
+  color:orangered;
+}
+.containe .box .box-input {
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 25px;
+  padding-left:10px;
+  border-radius: 5px;
+  flex-basis: 46%;
+  height: 40px;
+}
+.containe .box .box-input:focus {
+    outline: none;
+    border: 1px solid var(--tird_color);
+    box-shadow: 0 0 7px rgb(18, 16, 16);
+}
+.sucess{
+	text-align: center;
+	color: white;
+}
+.sucess a {
+	text-decoration: none;
+	color: #58aef7;
+}
+p.errorMessage {
+    background-color: #e66262;
+    border: #AA4502 1px solid;
+    padding: 5px 10px;
+    color: #FFFFFF;
+    border-radius: 3px;
+}
