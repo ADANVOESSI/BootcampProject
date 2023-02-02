@@ -23,7 +23,7 @@
                     <!-- box -->
                     <div class="box">
                         <h4>Parc National de la Pendjari</h4>
-                        <img src="../../ressources/assets/Pendjari/pendjari7.jpg" alt="parc pendjari">
+                        <img src="../../ressources/assets/pendjari7.jpg" alt="parc pendjari">
                         <div class="content">
                             <div>
                                 <h4>Parc National de la Pendjari</h4>
@@ -37,7 +37,7 @@
                     <!-- box -->
                     <div class="box">
                         <h4>Temple des pythons</h4>
-                        <img src="../../ressources/assets/Python/800px-Entrée_du_Temple_des_Pythons_(Ouidah).jpg" alt="temples des pythons">
+                        <img src="../../ressources/assets/800px-Entrée_du_Temple_des_Pythons_(Ouidah).jpg" alt="temples des pythons">
                         <div class="content">
                             <div>
                                 <h4>Temple des pythons</h4>
@@ -51,7 +51,7 @@
                     <!-- box -->
                     <div class="box">
                         <h4>Forêt sacrée de Kpassè</h4>
-                        <img src="../../ressources/assets/Kpasse/58984388_101.jpg" alt="forêt de kpassè">
+                        <img src="../../ressources/assets/58984388_101.jpg" alt="forêt de kpassè">
                         <div class="content">
                             <div>
                                 <h4>Forêt sacrée de Kpassè</h4>

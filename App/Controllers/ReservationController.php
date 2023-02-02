@@ -40,6 +40,21 @@ class ReservationController extends \Core\Controller {
         $nbrReservation = $tabCount["countR"]; 
         require_once('../App/Views/Admin/reservation.php');
     }
+
+
+
+    // Affichage de toutes les réservations enregistrées par l'utilisateur
+
+    public function afficheReservation() {
+        session_start();
+        $this->reservationModel = new ReservationModel();
+        $userID = $_SESSION["user_id"];
+        $this->userID = $userID;
+        $resultatReservation = $this->reservationModel->afficheReservation($this->userID);
+        $tabCount = $this->reservationModel->countReservationUser($this->userID);
+        $nbrReservation = $tabCount["countR"]; 
+        require_once('../App/Views/Users/afficheReservation.php');
+    }
     
 
     // Réservation faite par l'utilisateur
@@ -68,7 +83,7 @@ class ReservationController extends \Core\Controller {
 
             $this->emptyInputs();
             $this->reservationModel->insertReservation($this->hotel, $this->date_Arr, $this->date_sort, $this->adult, $this->child, $this->room, $this->nbr_room, $this->userID);
-            header('Location: /Users/notification');
+            header('Location: /ReservationController/afficheReservation');
         } else {
             header("Location:/Users/hotels?msg=error");
             exit();

@@ -12,7 +12,7 @@
     --fith_color:#999;
 }
 .div1{
-    background-color: var(--first_color);
+    background-color: var(--first_color) ;
     color: black;
     font-weight:bold ;
     padding-top: 5rem;
@@ -204,6 +204,15 @@ header .logo a span{
     position: relative;
     margin-left: 15px;
     font-size: 20px;
+}
+.title_echo{
+    margin: 70px  0;
+    font-weight: bold;
+    color: var(--first_color);
+    position: relative;
+    margin-left: 15px;
+    font-size: 20px;
+
 }
 .title::after{
     position: absolute;

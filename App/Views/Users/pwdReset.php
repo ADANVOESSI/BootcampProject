@@ -18,7 +18,7 @@
 			<input type="submit" name="envoyer" value="Envoyer" class="box-button"/>
 		</form>
 
-		<p class="box-register"> <a href="#">Retour</a></p>
+		<p class="box-register"> <a href="/Users/logout">Retour</a></p>
 
 	</div>
 </body>

@@ -109,28 +109,24 @@ class RegisterController extends \Core\Controller {
         $result = $this->registermodel->verify($this->email);
         $count = count($result);
 
-       if($count>0) {
+       if($count > 0) {
            $password = password_verify($this->password, $result[0]["password"]);
 
            if($password === true & $result[0]["type"] === "admin") {
                 $_SESSION['admin_id'] = $result[0]['id'];
                 $connexion = ProfileController::getUser();
-                header("Location:/Admin/index?msg=Page admin");
+                header("Location:/Users/accueil");
                 exit();
-            } 
-            
-            elseif($password === true & $result[0]["type"] !== "admin") {
+            } elseif($password === true & $result[0]["type"] !== "admin") {
                 $connexion = ProfileController::getUser();
 
                 header("Location:/Users/accueil");
                 exit();
-            }
-             else {
+            } else {
                header("Location:/Users/login?password_error");
                exit();
            }
-        } 
-        else {
+        } else {
             header("Location:/Users/login?msg=user_not_found&email=$this->email");
             exit();
         }
@@ -255,6 +251,7 @@ class RegisterController extends \Core\Controller {
                 $headers = "From: ERITEL Travel" . "\r\n" . "CC: eriteltechnologie@gmail.com";
 
                 mail($to, $subject, $txt, $headers);
+                
                 header('Location: /Users/confirmPassWord');
             } else {
                 header('Location: /RegisterController/pwdReset?msg=L\'Email est incorrecte!!!');

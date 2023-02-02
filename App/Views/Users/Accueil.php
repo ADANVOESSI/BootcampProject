@@ -18,7 +18,7 @@
             <section class="home">
                 <h2>Bienvenu au Bénin !</h2>
                 <h4>Voyager en Sécurité</h4>
-                <a href="/Users/hotels" class="btn_reservation home_btn">Réserver un Hôtel</a>
+                <a href="/ReservationController/afficheReservation" class="btn_reservation home_btn">Réserver un Hôtel</a>
             </section>
         </div>
     </main>

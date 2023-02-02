@@ -21,9 +21,7 @@ class ReservationModel extends Connexion {
 
     // Affichage de toutes les réservations dans la base
 
-    public function showReservation()
-    {
-
+    public function showReservation(){
         $connexion = new Connexion ;
         $conn = $connexion->connexion();
         $requeteReservation =  "SELECT user.lname, user.fname, user.email, reservation.hotel, reservation.date_Arr, reservation.date_sort, reservation.adult, reservation.child, reservation.room, reservation.nbr_room FROM user INNER JOIN reservation ON user.id = reservation.userID";
@@ -33,6 +31,8 @@ class ReservationModel extends Connexion {
     }
 
     
+    // Compteur des réservations niveau administrateur
+
     public function countReservation(){
         $connexion = new Connexion ;
         $conn = $connexion->connexion();
@@ -46,8 +46,8 @@ class ReservationModel extends Connexion {
 
 
     // Insertion et confirmation des réservations
-    public function insertReservation($hotel, $date_Arr, $date_sort, $adult, $child, $room, $nbr_room, $userID) {
 
+    public function insertReservation($hotel, $date_Arr, $date_sort, $adult, $child, $room, $nbr_room, $userID) {
         $connexion = $this->connexion();
 
         $this->hotel = $hotel;
@@ -76,15 +76,32 @@ class ReservationModel extends Connexion {
     }
 
 
-    public function afficheReservation($id)
+    // Afficher toutes les réservations faites par un utilisateur dans sa section
+
+    public function afficheReservation($userID)
     {
-        $this->id = $id;
-        $connexion = $this->connexion();
-        $request = "SELECT * FROM `bd_project`.reservation WHERE id = ?";
-        $connect = $connexion->prepare($request);
-        $connect->execute([$this->id]);
-        $result = $connect->fetch();
-        return $result;
+        $connexion = new Connexion ;
+        $this->userID = $userID;
+        $conn = $connexion->connexion();
+        $requeteReservation =  "SELECT * FROM `bd_project`.reservation WHERE userID = ? ";
+        $resultatReservation = $conn->prepare($requeteReservation);
+        $resultatReservation->execute([$this->userID]);
+        return $resultatReservation;
+    }
+    
+    
+    // Compteur des réservations d'un utilisateur
+    
+    public function countReservationUser($userID){
+        $connexion = new Connexion ;
+        $conn = $connexion->connexion();
+        $this->userID = $userID;
+
+        $requeteCount ="SELECT count(*) countR FROM reservation WHERE userID = ?";   
+        $resultatCount=$conn->prepare($requeteCount);
+        $resultatCount->execute([$this->userID]);
+        $tabCount = $resultatCount->fetch(PDO::FETCH_ASSOC);
+        return $tabCount;
     }
    
 }

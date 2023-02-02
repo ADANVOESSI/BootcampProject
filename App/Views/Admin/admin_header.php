@@ -21,12 +21,16 @@
             <div class="logo">
                 <a href=""><?php echo $_SESSION['user_lname'] .' '. $_SESSION['user_fname']; ?></a>
             </div>
-            <ul id="menu" class="menu">
-                <li><a href="/TouristeController/showTourist">Touristes</a></li>|
-                <li><a href="/GuideController/showGuid">Guides</a></li>|
-                <li><a href="/RegisterController/showUser">Utilisateurs</a></li>|
-                <li><a href="/Users/logout"><span class=""></span>Deconnection</a></li>
-            </ul>
+            <?php 
+                if ($admin_id) { ?>
+                    <ul id="menu" class="menu">
+                        <li><a href="/TouristeController/showTourist">Touristes</a></li>|
+                        <li><a href="/GuideController/showGuid">Guides</a></li>|
+                        <li><a href="/RegisterController/showUser">Utilisateurs</a></li>|
+                        <li><a href="/Users/logout"><span class=""></span>Deconnection</a></li>
+                    </ul>
+                <?php } ?>
+      
             <a href="/ReservationController/showReservation" class="btn_reservation reservation">Gestion des reservations</a>
             <div id="responsive_menu" class="responsive_menu"></div>
         </header>

@@ -78,18 +78,10 @@ class Users extends \Core\Controller {
   public function logoutAction() {
     View::render("Users/logout.php");
   }
-
-  // public function aboutAction() {
-  //   View::render("Users/About.php");
-  // }
-
+  
   public function sitesAction() {
     View::render("Users/Sites.php");
   }
-
-  // public function contactAction() {
-  //   View::render("Users/Contact.php");
-  // }
 
   public function reservationAction() {
     View::render("Admin/reservation.php");

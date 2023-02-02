@@ -1,5 +1,6 @@
 <?php
-session_start();
+    session_start();
+    $admin_id = $_SESSION['admin_id'];
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +12,7 @@ session_start();
     <title>Tourism_ERITEL Travel | Header</title>
     <link rel="stylesheet" href="ressources/css/styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="/ressources/assets/Coat_of_arms_of_Benin.svg.png" type="image/x-icon">
 </head>
 <body>
 <header>
@@ -31,25 +33,25 @@ session_start();
             <i onclick="dropdownFunction()" class="material-icons dropbtn" style="font-size:36px">account_circle</i>
             <span>
                 <?php
-                if (isset($_SESSION["user_id"])) {
-                    echo $_SESSION['user_lname']; 
-                }else {
-                    echo '';
-                }
+                    if (isset($_SESSION["user_id"])) {
+                        echo $_SESSION['user_lname']; 
+                    }
                 ?>
             </span>
         </p> 
         <div id="myDropdown" class="dropdown-content">
-        <?php if (isset($_SESSION["user_id"])) : ?>
+            <?php if(isset($_SESSION["admin_id"])) : ?>
+                <a href="/Admin/index?msg=Page admin">Admin</a>
+                <a href="/Users/logout">Déconnexion</a>
+            <?php elseif (isset($_SESSION["user_id"])) : ?>
             <a href="/Users/logout">Déconnexion</a>
-            <a href="/Admin/index">Admin</a>
             <?php else : ?>
                 <a href="/Users/login">Connexion</a>
                 <?php endif; ?>
         </div>
     </div>
 
-    <a href="/Users/hotels" class="btn_reservation reservation">Réserver un Hôtel</a>
+    <a href="/ReservationController/afficheReservation" class="btn_reservation reservation">Réserver un Hôtel</a>
     <div id="responsive_menu" class="responsive_menu"></div>
 
 </header>
