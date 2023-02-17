@@ -105,8 +105,8 @@ class RegisterController extends \Core\Controller {
 
 
     public function verifyLoginControl() {
-        $this->registermodel = new RegisterModel();
-        $result = $this->registermodel->verify($this->email);
+        $this->registerModel = new RegisterModel();
+        $result = $this->registerModel->verify($this->email);
         $count = count($result);
 
        if($count > 0) {
@@ -136,9 +136,9 @@ class RegisterController extends \Core\Controller {
     // Affichage des l'utilisateurs côté administrateur
 
     public function showUser(){
-        $this->registermodel = new RegisterModel();
-        $resultatUser = $this->registermodel->showUser();
-        $tabCount = $this->registermodel->countUser();
+        $this->registerModel = new RegisterModel();
+        $resultatUser = $this->registerModel->showUser();
+        $tabCount = $this->registerModel->countUser();
         $nbrUser = $tabCount["countUser"];
         require_once('../App/Views/Admin/users.php');
     }
@@ -231,25 +231,20 @@ class RegisterController extends \Core\Controller {
 
     public function pwdResetAction() {
         $this->registerModel = new RegisterModel();
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['envoyer']) {
             if (isset($_POST['email']))
             $this->email = $_POST['email'];
             else
             $this->email = "";
             if ($this->registerModel) {
                 $result = $this->registerModel->verify($this->email);
-                
-                $id = $result['id'];
-                $pwd = "1234";
+                $id = $result[0]['id'];
+                $pwd = implode(array_slice(str_split($result[0]['fname']),0,2)).'@'.random_int(100, 1000).implode(array_reverse(array_slice(str_split($result[0]['lname']),0,2)));
                 $result = $this->registerModel->updatePass($pwd, $id);
                 $to = $this->email;
-                
-                $subject = "INITIALISATION DE MOT DE PASSE";
-
-                $txt = "Votre nouveau mot de passe de ERITEL Travel est :$pwd";
-
+                $subject = "INITIALISATION DE MOT DE PASS ERITEL Travel";
+                $txt = "Votre nouveau mot de passe de ERITEL Travel :" . $pwd;
                 $headers = "From: ERITEL Travel" . "\r\n" . "CC: eriteltechnologie@gmail.com";
-
                 mail($to, $subject, $txt, $headers);
                 
                 header('Location: /Users/confirmPassWord');

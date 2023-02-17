@@ -34,7 +34,7 @@
             <span>
                 <?php
                     if (isset($_SESSION["user_id"])) {
-                        echo $_SESSION['user_lname']; 
+                        echo (implode(array_slice(str_split($_SESSION['user_lname']),0,1)).'. '.$_SESSION['user_fname']); 
                     }
                 ?>
             </span>
