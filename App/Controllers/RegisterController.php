@@ -232,26 +232,30 @@ class RegisterController extends \Core\Controller {
     public function pwdResetAction() {
         $this->registerModel = new RegisterModel();
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['envoyer']) {
-            if (isset($_POST['email']))
-            $this->email = $_POST['email'];
-            else
-            $this->email = "";
-            if ($this->registerModel) {
+            if (isset($_POST['email'])){
+                $this->email = $_POST['email'];
                 $result = $this->registerModel->verify($this->email);
-                $id = $result[0]['id'];
-                $pwd = implode(array_slice(str_split($result[0]['fname']),0,2)).'@'.random_int(100, 1000).implode(array_reverse(array_slice(str_split($result[0]['lname']),0,2)));
-                $result = $this->registerModel->updatePass($pwd, $id);
-                $to = $this->email;
-                $subject = "INITIALISATION DE MOT DE PASS ERITEL Travel";
-                $txt = "Votre nouveau mot de passe de ERITEL Travel :" . $pwd;
-                $headers = "From: ERITEL Travel" . "\r\n" . "CC: eriteltechnologie@gmail.com";
-                mail($to, $subject, $txt, $headers);
+                $count = count($result);
+                if ($count > 0) {
+
+                    $id = $result[0]['id'];
+                    $pwd = implode(array_slice(str_split($result[0]['fname']),0,2)).'@'.random_int(100, 1000).implode(array_reverse(array_slice(str_split($result[0]['lname']),0,2)));
+                    $result = $this->registerModel->updatePass($pwd, $id);
+                    $to = $this->email;
+                    $subject = "INITIALISATION DE MOT DE PASS ERITEL Travel";
+                    $txt = "Votre nouveau mot de passe de ERITEL Travel :" . $pwd;
+                    $headers = "From: ERITEL Travel" . "\r\n" . "CC: eriteltechnologie@gmail.com";
+                    mail($to, $subject, $txt, $headers);
+                    
+                    header('Location: /Users/confirmPassWord');
+
+                }else{
+                    header('Location: /Users/pwdReset?msg=L\'Email innexistant!!!');
+                }
                 
-                header('Location: /Users/confirmPassWord');
-            } else {
-                header('Location: /RegisterController/pwdReset?msg=L\'Email est incorrecte!!!');
+            }else{
+                header('Location: /Users/pwdReset?msg=L\'Email non renseigné!!!');
             }
         }
     }
-        
 }

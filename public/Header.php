@@ -30,7 +30,7 @@
 
     <div class="dropdown">
         <p>
-            <i onclick="dropdownFunction()" class="material-icons dropbtn" style="font-size:36px">account_circle</i>
+            <i onclick="dropdownFunction()" class="material-icons dropbtn" style="font-size:30px">account_circle</i>
             <span>
                 <?php
                     if (isset($_SESSION["user_id"])) {
